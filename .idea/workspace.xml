@@ -5,27 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c7c73c1-0ffe-4d0b-9e56-1efc98aac9ea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Piece.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/CustomButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/CustomGridPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/viewmodel/InterfaceChange.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/po_chess.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bishop.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ChessColors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ChessColors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Field.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/viewmodel/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/viewmodel/GameStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/HotSeatGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/viewmodel/HotSeatGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/King.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Knight.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Move.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Pawn.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Piece.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PieceTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/PieceTypes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Queen.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Rook.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Triplet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Triplet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/ChessColors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ChessColors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Piece.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Triplet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Triplet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/CustomButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/CustomButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/viewmodel/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/viewmodel/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/viewmodel/HotSeatGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/viewmodel/HotSeatGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/viewmodel/InterfaceChange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/viewmodel/InterfaceChange.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/hello-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +30,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JavaFXApplication" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -69,6 +66,64 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/view" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example" />
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example/po_chess" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="ChessGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="view.ChessGUI" />
+      <module name="po_chess" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="view.HelloApplication" />
+      <module name="po_chess" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="view.Main" />
+      <module name="po_chess" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="Application.ChessGUI" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

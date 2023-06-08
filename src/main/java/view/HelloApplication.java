@@ -1,4 +1,4 @@
-package com.example.po_chess;
+package view;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

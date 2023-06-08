@@ -8,12 +8,16 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import model.ChessColors;
 import model.PieceTypes;
+import model.Triplet;
 import viewmodel.Game;
 import viewmodel.HotSeatGame;
+
+import java.util.ArrayList;
 
 public class GameInterface extends Stage{
     CustomButton[][] chessboard;
     CustomButton current;
+    ArrayList<Triplet> list;
     PieceSet set;
     HotSeatGame game;
 

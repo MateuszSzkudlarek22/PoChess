@@ -20,6 +20,7 @@ public class HotSeatGame extends Game {
 
 
     public ArrayList<Triplet> getPossibleMoves(int X, int Y) {
+        System.out.println(X + " " + Y);
         switch (currentGameStatus) {
             case NORMAL -> {
                 return this.board.getPossibleMoves(X, Y, currentPlayer);
@@ -29,6 +30,10 @@ public class HotSeatGame extends Game {
             }
         }
         return null;
+    }
+
+    public void print() {
+        board.print();
     }
 
     public ArrayList<InterfaceChange> makeMove(int fromX, int fromY, int toX, int toY, char c, PieceTypes type) {
@@ -41,8 +46,15 @@ public class HotSeatGame extends Game {
         } else {
             if (board.checkingWhite != null) {
                 currentGameStatus = GameStatus.WHITECHECK;
+                return list;
             }
+            currentPlayer = ChessColors.WHITE;
         }
         return list;
+    }
+
+    @Override
+    public boolean isTaken(int X, int Y) {
+        return board.getPiece(X, Y) != null;
     }
 }

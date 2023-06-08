@@ -10,8 +10,6 @@ module com.example.po_chess {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
 
-    opens com.example.po_chess to javafx.fxml;
-    exports com.example.po_chess;
-    exports;
-    opens to
+    opens view to javafx.fxml;
+    exports view;
 }

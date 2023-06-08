@@ -25,4 +25,6 @@ public abstract class Game {
     public abstract ArrayList<InterfaceChange> makeMove(int fromX, int fromY, int toX, int toY, char c, PieceTypes type);
 
     public abstract ArrayList<Triplet> getPossibleMoves(int X, int Y);
+
+    public abstract boolean isTaken(int X, int Y);
 }

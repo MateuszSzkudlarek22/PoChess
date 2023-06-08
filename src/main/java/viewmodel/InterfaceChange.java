@@ -1,13 +1,18 @@
 package viewmodel;
 
-public class InterfaceChange {
-    int X;
-    int Y;
-    String change;
+import model.ChessColors;
+import model.PieceTypes;
 
-    public InterfaceChange(int X, int Y, String string){
+public class InterfaceChange {
+    public int X;
+    public int Y;
+    public PieceTypes change;
+    public ChessColors color;
+
+    public InterfaceChange(int X, int Y, PieceTypes type, ChessColors color){
         this.X = X;
         this.Y = Y;
-        this.change = string;
+        this.change = type;
+        this.color = color;
     }
 }
