@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public abstract class Game {
     ChessColors currentPlayer;
     Board board;
-    GameStatus currentGameStatus;
+    public GameStatus currentGameStatus;
 
     Game(){
         currentPlayer = ChessColors.WHITE;

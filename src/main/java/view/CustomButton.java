@@ -8,10 +8,13 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.ChessColors;
 import model.PieceTypes;
 import model.Triplet;
+import viewmodel.GameStatus;
 import viewmodel.InterfaceChange;
 
 import java.util.ArrayList;
@@ -67,9 +70,14 @@ public class CustomButton extends Button {
                             gameInterface.current.X, gameInterface.current.Y,
                             bt.X, bt.Y, bt.move, null);
                     for (InterfaceChange i : list) {
+                        if(i.X==-1){
+                            endStage().show();
+                            return;
+                        }
                         if (i.change == null) gameInterface.chessboard[i.X][i.Y].setGraphic(null);
                         else
-                            gameInterface.chessboard[i.X][i.Y].setGraphic(gameInterface.set.getImageView(i.color, i.change));
+                            if(i.flag) gameInterface.chessboard[i.X][i.Y].setStyle("-fx-background-color: #FF0000");
+                            else gameInterface.chessboard[i.X][i.Y].setGraphic(gameInterface.set.getImageView(i.color, i.change));
                     }
                     gameInterface.current = null;
                     gameInterface.list = null;
@@ -219,6 +227,23 @@ public class CustomButton extends Button {
         pane.add(queen, 2, 2);
         return stage;
     }
+
+    Stage endStage(){
+        Stage stage = new Stage();
+        Text text = new Text(gameInterface.game.currentGameStatus == GameStatus.BLACKMATE? "White wins!!!" : "Black wins!!!");
+        Button saveGame = new Button("Save game");
+        saveGame.setPrefHeight(70);
+        saveGame.setPrefWidth(120);
+        Button endGame = new Button("End game");
+        endGame.setPrefHeight(70);
+        endGame.setPrefWidth(120);
+        VBox root = new VBox(text, saveGame, endGame);
+        root.setAlignment(Pos.CENTER);
+        root.setSpacing(30);
+        Scene scene = new Scene(root, 250, 300);
+        stage.setScene(scene);
+        return stage;
+    }
 }
 
 class PieceSet {
@@ -244,6 +269,7 @@ class PieceSet {
 
     ImageView getImageView(ChessColors color, PieceTypes piece) {
         String string = color == ChessColors.BLACK ? blackMap.get(piece) : whiteMap.get(piece);
+        System.out.println(string);
         ImageView img = new ImageView(new Image(string));
         img.setFitWidth(35);
         img.setFitHeight(35);

@@ -8,6 +8,7 @@ import viewmodel.Game;
 import viewmodel.GameStatus;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class HotSeatGame extends Game {
 
@@ -26,6 +27,7 @@ public class HotSeatGame extends Game {
                 return this.board.getPossibleMoves(X, Y, currentPlayer);
             }
             case BLACKCHECK, WHITECHECK -> {
+                System.out.println("Here");
                 return this.board.getPossibleCheckedMoves(X, Y, currentPlayer);
             }
         }
@@ -39,16 +41,31 @@ public class HotSeatGame extends Game {
     public ArrayList<InterfaceChange> makeMove(int fromX, int fromY, int toX, int toY, char c, PieceTypes type) {
         ArrayList<InterfaceChange> list = board.makeMove(fromX, fromY, toX, toY, currentPlayer, c, type);
         if (currentPlayer == ChessColors.WHITE) {
-            if (board.checkingBlack != null) {
-                currentGameStatus = GameStatus.BLACKCHECK;
-            }
             currentPlayer = ChessColors.BLACK;
+            if (board.checkingBlack != null) {
+                if (board.isCheckmate(ChessColors.BLACK)) {
+                    currentGameStatus = GameStatus.BLACKMATE;
+                    System.out.println("Mate");
+                    return new ArrayList<>(
+                            Collections.singleton(new InterfaceChange(-1, -1, null, null)));
+                }
+                currentGameStatus = GameStatus.BLACKCHECK;
+                return list;
+            }
+            currentGameStatus = GameStatus.NORMAL;
         } else {
+            currentPlayer = ChessColors.WHITE;
             if (board.checkingWhite != null) {
+                if (board.isCheckmate(ChessColors.WHITE)) {
+                    currentGameStatus = GameStatus.WHITEMATE;
+                    currentGameStatus = GameStatus.BLACKMATE;
+                    return new ArrayList<>(
+                            Collections.singleton(new InterfaceChange(-1, -1, null, null)));
+                }
                 currentGameStatus = GameStatus.WHITECHECK;
                 return list;
             }
-            currentPlayer = ChessColors.WHITE;
+            currentGameStatus = GameStatus.NORMAL;
         }
         return list;
     }

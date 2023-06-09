@@ -69,11 +69,304 @@ public class Piece {
         ArrayList<Triplet> list = new ArrayList<>();
         ArrayList<Triplet> listThis = this.getPossibleMoves(color);
         ArrayList<Triplet> listChecking = null;
+        if (type == PieceTypes.KING) {
+            Piece piece = board.fields[X][Y];
+            board.fields[X][Y] = null;
+            ArrayList<Triplet> temp = new ArrayList<>();
+            for (int i = 0; i < 8; i++) {
+                for (int j = 0; j < 8; j++) {
+                    if (board.fields[i][j] != null && board.fields[i][j].getColor() != color) {
+                        temp.addAll(board.fields[i][j].getPossibleMoves(board.fields[i][j].getColor()));
+                    }
+                }
+            }
+            if (X - 1 >= 0) {
+                if (board.fields[X - 1][Y] == null) {
+                    boolean flag = true;
+                    for (Triplet t : temp) {
+                        if (t.X == X - 1 && t.Y == Y) {
+                            flag = false;
+                            break;
+                        }
+                    }
+                    if (flag) list.add(new Triplet('M', X - 1, Y));
+                } else {
+                    if (board.fields[X - 1][Y].getColor() != color) {
+                        Piece piece1 = board.fields[X - 1][Y];
+                        board.fields[X - 1][Y] = null;
+                        ArrayList<Triplet> listTemp = new ArrayList<>();
+                        for (Piece[] t : board.fields) {
+                            for (Piece p : t) {
+                                if (p != null)
+                                    listTemp.addAll(p.getPossibleMoves(color == ChessColors.WHITE ? ChessColors.BLACK : ChessColors.WHITE));
+                            }
+                        }
+                        boolean flag = true;
+                        for (Triplet t : listTemp) {
+                            if (t.X == X - 1 && t.Y == Y) {
+                                flag = false;
+                                break;
+                            }
+                        }
+                        if (flag) list.add(new Triplet('A', X - 1, Y));
+                        board.fields[X - 1][Y] = piece1;
+                    }
+                }
+            }
+            if (X - 1 >= 0 && Y - 1 >= 0) {
+                if (board.fields[X - 1][Y - 1] == null) {
+                    boolean flag = true;
+                    for (Triplet t : temp) {
+                        if (t.X == X - 1 && t.Y == Y - 1) {
+                            flag = false;
+                            break;
+                        }
+                    }
+                    if (flag) list.add(new Triplet('M', X - 1, Y - 1));
+                } else {
+                    if (board.fields[X - 1][Y - 1].getColor() != color) {
+                        Piece piece1 = board.fields[X - 1][Y - 1];
+                        board.fields[X - 1][Y - 1] = null;
+                        ArrayList<Triplet> listTemp = new ArrayList<>();
+                        for (Piece[] t : board.fields) {
+                            for (Piece p : t) {
+                                if (p != null)
+                                    listTemp.addAll(p.getPossibleMoves(color == ChessColors.WHITE ? ChessColors.BLACK : ChessColors.WHITE));
+                            }
+                        }
+                        boolean flag = true;
+                        for (Triplet t : listTemp) {
+                            if (t.X == X - 1 && t.Y == Y - 1) {
+                                flag = false;
+                                break;
+                            }
+                        }
+                        if (flag) list.add(new Triplet('A', X - 1, Y - 1));
+                        board.fields[X - 1][Y - 1] = piece1;
+                    }
+                }
+            }
+            if (Y - 1 >= 0 && X + 1 < 8) {
+                if (board.fields[X + 1][Y - 1] == null) {
+                    boolean flag = true;
+                    for (Triplet t : temp) {
+                        if (t.X == X + 1 && t.Y == Y - 1) {
+                            flag = false;
+                            break;
+                        }
+                    }
+                    if (flag) list.add(new Triplet('M', X + 1, Y - 1));
+                } else {
+                    if (board.fields[X + 1][Y - 1].getColor() != color) {
+                        Piece piece1 = board.fields[X + 1][Y - 1];
+                        board.fields[X + 1][Y - 1] = null;
+                        ArrayList<Triplet> listTemp = new ArrayList<>();
+                        for (Piece[] t : board.fields) {
+                            for (Piece p : t) {
+                                if (p != null) {
+                                    ArrayList<Triplet> list1 = p.getPossibleMoves(color == ChessColors.WHITE ? ChessColors.BLACK : ChessColors.WHITE);
+                                    if (list1 != null) listTemp.addAll(list1);
+                                }
+                            }
+                        }
+                        boolean flag = true;
+                        for (Triplet t : listTemp) {
+                            if (t.X == X + 1 && t.Y == Y - 1) {
+                                flag = false;
+                                break;
+                            }
+                        }
+                        if (flag) list.add(new Triplet('A', X + 1, Y - 1));
+                        board.fields[X + 1][Y - 1] = piece1;
+                    }
+                }
+            }
+            if (Y - 1 >= 0) {
+                if (board.fields[X][Y - 1] == null) {
+                    boolean flag = true;
+                    for (Triplet t : temp) {
+                        if (t.X == X && t.Y == Y - 1) {
+                            flag = false;
+                            break;
+                        }
+                    }
+                    if (flag) list.add(new Triplet('M', X, Y - 1));
+                } else {
+                    if (board.fields[X][Y - 1].getColor() != color) {
+                        Piece piece1 = board.fields[X][Y - 1];
+                        board.fields[X][Y - 1] = null;
+                        ArrayList<Triplet> listTemp = new ArrayList<>();
+                        for (Piece[] t : board.fields) {
+                            for (Piece p : t) {
+                                if (p != null)
+                                    listTemp.addAll(p.getPossibleMoves(color == ChessColors.WHITE ? ChessColors.BLACK : ChessColors.WHITE));
+                            }
+                        }
+                        boolean flag = true;
+                        for (Triplet t : listTemp) {
+                            if (t.X == X && t.Y == Y - 1) {
+                                flag = false;
+                                break;
+                            }
+                        }
+                        if (flag) list.add(new Triplet('A', X, Y - 1));
+                        board.fields[X][Y - 1] = piece1;
+                    }
+                }
+            }
+            if (X + 1 < 8) {
+                if (board.fields[X + 1][Y] == null) {
+                    boolean flag = true;
+                    for (Triplet t : temp) {
+                        if (t.X == X && t.Y == Y - 1) {
+                            flag = false;
+                            break;
+                        }
+                    }
+                    if (flag) list.add(new Triplet('M', X + 1, Y));
+                } else {
+                    if (board.fields[X + 1][Y].getColor() != color) {
+                        Piece piece1 = board.fields[X + 1][Y];
+                        board.fields[X + 1][Y] = null;
+                        ArrayList<Triplet> listTemp = new ArrayList<>();
+                        for (Piece[] t : board.fields) {
+                            for (Piece p : t) {
+                                if (p != null)
+                                    listTemp.addAll(p.getPossibleMoves(color == ChessColors.WHITE ? ChessColors.BLACK : ChessColors.WHITE));
+                            }
+                        }
+                        boolean flag = true;
+                        for (Triplet t : listTemp) {
+                            if (t.X == X + 1 && t.Y == Y) {
+                                flag = false;
+                                break;
+                            }
+                        }
+                        if (flag) list.add(new Triplet('A', X + 1, Y));
+                        board.fields[X + 1][Y] = piece1;
+                    }
+                }
+            }
+            if (X + 1 < 8 && Y + 1 < 8) {
+                if (board.fields[X + 1][Y + 1] == null) {
+                    boolean flag = true;
+                    for (Triplet t : temp) {
+                        if (t.X == X + 1 && t.Y == Y + 1) {
+                            flag = false;
+                            break;
+                        }
+                    }
+                    if (flag) list.add(new Triplet('M', X + 1, Y + 1));
+                } else {
+                    if (board.fields[X + 1][Y + 1].getColor() != color) {
+                        Piece piece1 = board.fields[X + 1][Y + 1];
+                        board.fields[X + 1][Y + 1] = null;
+                        ArrayList<Triplet> listTemp = new ArrayList<>();
+                        for (Piece[] t : board.fields) {
+                            for (Piece p : t) {
+                                if (p != null)
+                                    listTemp.addAll(p.getPossibleMoves(color == ChessColors.WHITE ? ChessColors.BLACK : ChessColors.WHITE));
+                            }
+                        }
+                        boolean flag = true;
+                        for (Triplet t : listTemp) {
+                            if (t.X == X + 1 && t.Y == Y + 1) {
+                                flag = false;
+                                break;
+                            }
+                        }
+                        if (flag) list.add(new Triplet('A', X + 1, Y + 1));
+                        board.fields[X + 1][Y + 1] = piece1;
+                    }
+                }
+            }
+            if (Y + 1 < 8) {
+                if (board.fields[X][Y + 1] == null) {
+                    boolean flag = true;
+                    for (Triplet t : temp) {
+                        if (t.X == X && t.Y == Y - 1) {
+                            flag = false;
+                            break;
+                        }
+                    }
+                    if (flag) list.add(new Triplet('M', X, Y + 1));
+                } else {
+                    if (board.fields[X][Y + 1].getColor() != color) {
+                        Piece piece1 = board.fields[X][Y + 1];
+                        board.fields[X][Y + 1] = null;
+                        ArrayList<Triplet> listTemp = new ArrayList<>();
+                        for (Piece[] t : board.fields) {
+                            for (Piece p : t) {
+                                if (p != null)
+                                    listTemp.addAll(p.getPossibleMoves(color == ChessColors.WHITE ? ChessColors.BLACK : ChessColors.WHITE));
+                            }
+                        }
+                        boolean flag = true;
+                        for (Triplet t : listTemp) {
+                            if (t.X == X && t.Y == Y + 1) {
+                                flag = false;
+                                break;
+                            }
+                        }
+                        if (flag) list.add(new Triplet('A', X, Y + 1));
+                        board.fields[X][Y + 1] = piece1;
+                    }
+                }
+            }
+            if (X - 1 >= 0 && Y + 1 < 8) {
+                if (board.fields[X - 1][Y + 1] == null) {
+                    boolean flag = true;
+                    for (Triplet t : temp) {
+                        if (t.X == X - 1 && t.Y == Y + 1) {
+                            flag = false;
+                            break;
+                        }
+                    }
+                    if (flag) list.add(new Triplet('M', X - 1, Y + 1));
+                } else {
+                    if (board.fields[X - 1][Y + 1].getColor() != color) {
+                        Piece piece1 = board.fields[X - 1][Y + 1];
+                        board.fields[X - 1][Y + 1] = null;
+                        ArrayList<Triplet> listTemp = new ArrayList<>();
+                        for (Piece[] t : board.fields) {
+                            for (Piece p : t) {
+                                if (p != null)
+                                    listTemp.addAll(p.getPossibleMoves(color == ChessColors.WHITE ? ChessColors.BLACK : ChessColors.WHITE));
+                            }
+                        }
+                        boolean flag = true;
+                        for (Triplet t : listTemp) {
+                            if (t.X == X - 1 && t.Y == Y + 1) {
+                                flag = false;
+                                break;
+                            }
+                        }
+                        if (flag) list.add(new Triplet('A', X - 1, Y + 1));
+                        board.fields[X - 1][Y + 1] = piece1;
+                    }
+                }
+            }
+            board.fields[X][Y] = piece;
+            return list;
+        }
         if (color == ChessColors.WHITE) {
             if (board.checkingWhite.getType() != PieceTypes.KNIGHT)
                 listChecking = board.checkingWhite.getPossibleCheckedAttackingMoves();
             for (Triplet t : listThis) {
                 if (t.X == board.checkingWhite.X && t.Y == board.checkingWhite.Y) {
+                    list.add(new Triplet('A', t.X, t.Y));
+                }
+                if (listChecking != null) {
+                    for (Triplet t1 : listChecking) {
+                        if (t.X == t1.X && t.Y == t1.Y) list.add(new Triplet('M', t.X, t.Y));
+                    }
+                }
+            }
+        } else {
+            if (board.checkingBlack.getType() != PieceTypes.KNIGHT)
+                listChecking = board.checkingBlack.getPossibleCheckedAttackingMoves();
+            for (Triplet t : listThis) {
+                if (t.X == board.checkingBlack.X && t.Y == board.checkingBlack.Y) {
                     list.add(new Triplet('A', t.X, t.Y));
                 }
                 if (listChecking != null) {
@@ -465,7 +758,7 @@ public class Piece {
             if (board.fields[i][Y] != null) {
                 if (board.fields[i][Y].getType() == PieceTypes.ROOK &&
                         !board.fields[i][Y].isMoved() && !moved) {
-                    list.add(new Triplet('C', i-1, Y));
+                    list.add(new Triplet('C', i - 1, Y));
                 }
                 break;
             }
@@ -474,7 +767,7 @@ public class Piece {
             if (board.fields[i][Y] != null) {
                 if (board.fields[i][Y].getType() == PieceTypes.ROOK &&
                         !board.fields[i][Y].isMoved() && !moved) {
-                    list.add(new Triplet('C', i+1, Y));
+                    list.add(new Triplet('C', i + 1, Y));
                 }
                 break;
             }

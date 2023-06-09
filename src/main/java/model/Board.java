@@ -32,18 +32,6 @@ public class Board {
         }
     }
 
-    public boolean isCheckmate(ChessColors color) {
-        for (Piece[] p : fields) {
-            for (Piece piece : p) {
-                if (piece != null && piece.getColor() == color) {
-                    ArrayList<Triplet> list = piece.getPossibleCheckedMoves(color);
-                    if (list == null || list.isEmpty()) return true;
-                }
-            }
-        }
-        return false;
-    }
-
     public void setNormalGame() {
         fields[0][0] = new Piece(ChessColors.WHITE, PieceTypes.ROOK, 0, 0, this);
         fields[1][0] = new Piece(ChessColors.WHITE, PieceTypes.KNIGHT, 1, 0, this);
@@ -71,6 +59,8 @@ public class Board {
 
     public ArrayList<InterfaceChange> makeMove(int fromX, int fromY, int toX, int toY, ChessColors color, char kind, PieceTypes type) {
         fields[fromX][fromY].moved = true;
+        if (color == ChessColors.WHITE) checkingWhite = null;
+        else checkingBlack = null;
         switch (kind) {
             case 'M', 'A' -> {
                 return makeNormalMove(fromX, fromY, toX, toY, color);
@@ -91,6 +81,7 @@ public class Board {
     }
 
     public ArrayList<Triplet> getPossibleCheckedMoves(int X, int Y, ChessColors color) {
+        System.out.println("checked");
         return fields[X][Y].getPossibleCheckedMoves(color);
     }
 
@@ -109,10 +100,10 @@ public class Board {
             if (t.take == 'A' && fields[t.X][t.Y].getType() == PieceTypes.KING && color != fields[t.X][t.Y].getColor()) {
                 if (color == ChessColors.BLACK) {
                     checkingWhite = fields[toX][toY];
-                    //list.add(new InterfaceChange(t.X, t.Y, "check white"));
+                    list.add(new InterfaceChange(t.X, t.Y, PieceTypes.KING, ChessColors.WHITE).setCheck());
                 } else {
                     checkingBlack = fields[toX][toY];
-                    //list.add(new InterfaceChange(t.X, t.Y, "check black"));
+                    list.add(new InterfaceChange(t.X, t.Y, PieceTypes.KING, ChessColors.BLACK).setCheck());
                 }
                 break;
             }
@@ -131,10 +122,10 @@ public class Board {
             if (t.take == 'A' && fields[t.X][t.Y].getType() == PieceTypes.KING && color != fields[t.X][t.Y].getColor()) {
                 if (color == ChessColors.BLACK) {
                     checkingWhite = fields[toX][toY];
-                    //list.add(new InterfaceChange(t.X, t.Y, "check white"));
+                    list.add(new InterfaceChange(t.X, t.Y, PieceTypes.KING, ChessColors.WHITE).setCheck());
                 } else {
                     checkingBlack = fields[toX][toY];
-                    //list.add(new InterfaceChange(t.X, t.Y, "check black"));
+                    list.add(new InterfaceChange(t.X, t.Y, PieceTypes.KING, ChessColors.BLACK).setCheck());
                 }
                 break;
             }
@@ -167,14 +158,26 @@ public class Board {
             if (t.take == 'A' && fields[t.X][t.Y].getType() == PieceTypes.KING && color != fields[t.X][t.Y].getColor()) {
                 if (color == ChessColors.BLACK) {
                     checkingWhite = fields[toX][toY];
-                    // list.add(new InterfaceChange(t.X, t.Y, "check white"));
+                    list.add(new InterfaceChange(t.X, t.Y, PieceTypes.KING, ChessColors.WHITE).setCheck());
                 } else {
                     checkingBlack = fields[toX][toY];
-                    //list.add(new InterfaceChange(t.X, t.Y, "check black"));
+                    list.add(new InterfaceChange(t.X, t.Y, PieceTypes.KING, ChessColors.BLACK).setCheck());
                 }
                 break;
             }
         }
         return list;
+    }
+
+    public boolean isCheckmate(ChessColors color) {
+        for (Piece[] t : fields) {
+            for (Piece p : t) {
+                if (p != null && p.getColor() == color) {
+                    ArrayList<Triplet> list = p.getPossibleCheckedMoves(color);
+                    if (list != null && !list.isEmpty()) return false;
+                }
+            }
+        }
+        return true;
     }
 }

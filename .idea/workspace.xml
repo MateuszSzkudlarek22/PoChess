@@ -6,21 +6,21 @@
   <component name="ChangeListManager">
     <list default="true" id="7c7c73c1-0ffe-4d0b-9e56-1efc98aac9ea" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/ChessColors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ChessColors.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Piece.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Triplet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Triplet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/CustomButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/CustomButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/viewmodel/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/viewmodel/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/viewmodel/HotSeatGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/viewmodel/HotSeatGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/viewmodel/InterfaceChange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/viewmodel/InterfaceChange.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/hello-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Board.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/CustomButton$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/CustomButton$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/CustomButton$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/CustomButton$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/CustomButton$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/CustomButton$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/CustomButton$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/CustomButton$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/CustomButton$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/CustomButton$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/CustomButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/CustomButton.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/PieceSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/PieceSet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/viewmodel/InterfaceChange.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/viewmodel/InterfaceChange.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,5 +146,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/model/Board.java</url>
+          <line>94</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
