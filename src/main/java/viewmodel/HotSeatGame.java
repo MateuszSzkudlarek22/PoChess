@@ -40,7 +40,7 @@ public class HotSeatGame extends Game {
     }
 
     public ArrayList<InterfaceChange> makeMove(int fromX, int fromY, int toX, int toY, char c, PieceTypes type) {
-        StringBuilder n = new StringBuilder();
+        /*StringBuilder n = new StringBuilder();
         from.add(new Pair<>(fromX, fromY));
         switch(board.getPiece(fromX, fromY).getType()){
             case ROOK -> n.append("W");
@@ -55,14 +55,14 @@ public class HotSeatGame extends Game {
         }
         if(c=='R') n.append("0-0");
         n.append('a'+toX);
-        n.append(toY);
+        n.append(toY);*/
         ArrayList<InterfaceChange> list = board.makeMove(fromX, fromY, toX, toY, currentPlayer, c, type);
         if (currentPlayer == ChessColors.WHITE) {
             currentPlayer = ChessColors.BLACK;
             if (board.checkingBlack != null) {
                 if (board.isCheckmate(ChessColors.BLACK)) {
                     currentGameStatus = GameStatus.BLACKMATE;
-                    n.append('#');
+                    //n.append('#');
                     System.out.println("Mate");
                     return new ArrayList<>(
                             Collections.singleton(new InterfaceChange(-1, -1, null, null)));
