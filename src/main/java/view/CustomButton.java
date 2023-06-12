@@ -51,7 +51,7 @@ public class CustomButton extends Button {
                                 else gameInterface.chessboard[t.X][t.Y].
                                         setStyle("-fx-background-color: #FFFFFF");
                             }
-                            case 'A' -> {
+                            case 'A', 'T' -> {
                                 if ((t.X + t.Y) % 2 == 0)
                                     gameInterface.chessboard[t.X][t.Y].
                                             setStyle("-fx-background-color: #A52A2A");
@@ -102,7 +102,7 @@ public class CustomButton extends Button {
                                     img.setFitWidth(15);
                                     gameInterface.chessboard[t.X][t.Y].setGraphic(img);
                                 }
-                                case 'A', 'E' -> {
+                                case 'A', 'E', 'T' -> {
                                     gameInterface.chessboard[t.X][t.Y].setStyle("-fx-background-color: #FF0000");
                                 }
                             }
@@ -121,7 +121,7 @@ public class CustomButton extends Button {
                                     else gameInterface.chessboard[t.X][t.Y].
                                             setStyle("-fx-background-color: #FFFFFF");
                                 }
-                                case 'A', 'E' -> {
+                                case 'A', 'E', 'T' -> {
                                     if ((t.X + t.Y) % 2 == 0)
                                         gameInterface.chessboard[t.X][t.Y].
                                                 setStyle("-fx-background-color: #A52A2A");

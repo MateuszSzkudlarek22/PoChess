@@ -6,8 +6,10 @@ public class Piece {
     ChessColors color;
     int X;
     int Y;
+    int lastMoved;
     Board board;
     boolean moved = false;
+    boolean moved1 = false;
     PieceTypes type;
 
     public Piece(ChessColors color, PieceTypes type, int X, int Y, Board board) {
@@ -18,11 +20,11 @@ public class Piece {
         this.type = type;
     }
 
-    ChessColors getColor() {
+    public ChessColors getColor() {
         return color;
     }
 
-    PieceTypes getType() {
+    public PieceTypes getType() {
         return type;
     }
 
@@ -130,8 +132,10 @@ public class Piece {
                         ArrayList<Triplet> listTemp = new ArrayList<>();
                         for (Piece[] t : board.fields) {
                             for (Piece p : t) {
-                                if (p != null)
-                                    listTemp.addAll(p.getPossibleMoves(color == ChessColors.WHITE ? ChessColors.BLACK : ChessColors.WHITE));
+                                if (p != null) {
+                                    ArrayList<Triplet> c = p.getPossibleMoves(color == ChessColors.WHITE ? ChessColors.BLACK : ChessColors.WHITE);
+                                    if (c != null) listTemp.addAll(c);
+                                }
                             }
                         }
                         boolean flag = true;
@@ -383,6 +387,18 @@ public class Piece {
         System.out.println("Pawn");
         ArrayList<Triplet> list = new ArrayList<>();
         if (this.color == ChessColors.WHITE) {
+            if (X - 1 >= 0 && board.fields[X - 1][Y] != null &&
+                    board.fields[X - 1][Y].getType() == PieceTypes.PAWN && board.fields[X - 1][Y].moved &&
+                    board.fields[X - 1][Y].moved1 && board.fields[X - 1][Y].getColor() != color &&
+                    board.fields[X - 1][Y].lastMoved == board.count) {
+                list.add(new Triplet('T', X - 1, Y + 1));
+            }
+            if (X + 1 < 8 && board.fields[X + 1][Y] != null &&
+                    board.fields[X + 1][Y].getType() == PieceTypes.PAWN && board.fields[X + 1][Y].moved &&
+                    board.fields[X + 1][Y].moved1 && board.fields[X + 1][Y].getColor() != color &&
+                    board.fields[X + 1][Y].lastMoved == board.count) {
+                list.add(new Triplet('T', X + 1, Y + 1));
+            }
             if (Y + 1 == 7 && board.getPiece(X, Y + 1) == null) {
                 list.add(new Triplet('P', X, Y + 1));
             }
@@ -392,20 +408,37 @@ public class Piece {
             if (Y + 2 < 7 && !moved && board.getPiece(X, Y + 2) == null) {
                 list.add(new Triplet('M', X, Y + 2));
             }
-            if (X - 1 >= 0 && Y + 1 < 8 && board.getPiece(X - 1, Y + 1) != null) {
+            if (X - 1 >= 0 && Y + 1 < 8 && board.getPiece(X - 1, Y + 1) != null &&
+                    board.getPiece(X - 1, Y + 1).getColor() != color) {
                 list.add(new Triplet('A', X - 1, Y + 1));
             }
-            if (X - 1 >= 0 && Y + 1 == 7 && board.getPiece(X - 1, Y + 1) != null) {
+            if (X - 1 >= 0 && Y + 1 == 7 && board.getPiece(X - 1, Y + 1) != null &&
+                    board.getPiece(X - 1, Y + 1).getColor() != color) {
                 list.add(new Triplet('E', X - 1, Y + 1));
             }
-            if (X + 1 < 8 && Y + 1 < 8 && board.getPiece(X + 1, Y + 1) != null) {
+            if (X + 1 < 8 && Y + 1 < 8 && board.getPiece(X + 1, Y + 1) != null &&
+                    board.getPiece(X + 1, Y + 1).getColor() != color) {
                 list.add(new Triplet('A', X + 1, Y + 1));
             }
-            if (X + 1 < 8 && Y + 1 == 7 && board.getPiece(X + 1, Y + 1) != null) {
+            if (X + 1 < 8 && Y + 1 == 7 && board.getPiece(X + 1, Y + 1) != null &&
+                    board.getPiece(X + 1, Y + 1).getColor() != color) {
                 list.add(new Triplet('E', X + 1, Y + 1));
             }
         } else {
             System.out.println("Black");
+
+            if (X - 1 >= 0 && board.fields[X - 1][Y] != null &&
+                    board.fields[X - 1][Y].getType() == PieceTypes.PAWN && board.fields[X - 1][Y].moved &&
+                    board.fields[X - 1][Y].moved1 && board.fields[X - 1][Y].getColor() != color &&
+                    board.count == board.fields[X - 1][Y].lastMoved) {
+                list.add(new Triplet('T', X - 1, Y - 1));
+            }
+            if (X + 1 < 8 && board.fields[X + 1][Y] != null &&
+                    board.fields[X + 1][Y].getType() == PieceTypes.PAWN && board.fields[X + 1][Y].moved &&
+                    board.fields[X + 1][Y].moved1 && board.fields[X + 1][Y].getColor() != color &&
+                    board.count == board.fields[X + 1][Y].lastMoved) {
+                list.add(new Triplet('T', X + 1, Y - 1));
+            }
             if (Y - 1 == 0 && board.getPiece(X, 0) == null) {
                 list.add(new Triplet('P', X, Y - 1));
             }
@@ -413,14 +446,23 @@ public class Piece {
                 list.add(new Triplet('M', X, Y - 1));
             }
             if (!moved && Y - 2 > 0 && board.getPiece(X, Y - 2) == null) {
-                System.out.println("work");
                 list.add(new Triplet('M', X, Y - 2));
             }
-            if (X - 1 > 0 && Y - 1 > 0 && board.getPiece(X - 1, Y - 1) != null) {
+            if (X - 1 > 0 && Y - 1 > 0 && board.getPiece(X - 1, Y - 1) != null &&
+                    board.getPiece(X - 1, Y - 1).getColor() != color) {
                 list.add(new Triplet('A', X - 1, Y - 1));
             }
-            if (X + 1 < 8 && Y - 1 > 0 && board.getPiece(X + 1, Y - 1) != null) {
+            if (X - 1 >= 0 && Y - 1 == 0 && board.getPiece(X - 1, Y + 1) != null &&
+                    board.getPiece(X - 1, Y - 1).getColor() != color) {
+                list.add(new Triplet('E', X - 1, Y + 1));
+            }
+            if (X + 1 < 8 && Y - 1 > 0 && board.getPiece(X + 1, Y - 1) != null &&
+                    board.getPiece(X + 1, Y - 1).getColor() != color) {
                 list.add(new Triplet('A', X + 1, Y - 1));
+            }
+            if (X + 1 < 8 && Y - 1 == 0 && board.getPiece(X + 1, Y + 1) != null &&
+                    board.getPiece(X + 1, Y - 1).getColor() != color) {
+                list.add(new Triplet('E', X + 1, Y + 1));
             }
         }
         return list;

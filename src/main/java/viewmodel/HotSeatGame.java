@@ -1,5 +1,6 @@
 package viewmodel;
 
+import javafx.util.Pair;
 import model.Board;
 import model.ChessColors;
 import model.PieceTypes;
@@ -39,12 +40,29 @@ public class HotSeatGame extends Game {
     }
 
     public ArrayList<InterfaceChange> makeMove(int fromX, int fromY, int toX, int toY, char c, PieceTypes type) {
+        StringBuilder n = new StringBuilder();
+        from.add(new Pair<>(fromX, fromY));
+        switch(board.getPiece(fromX, fromY).getType()){
+            case ROOK -> n.append("W");
+            case BISHOP -> n.append("G");
+            case KNIGHT -> n.append("S");
+            case QUEEN -> n.append("H");
+            case KING -> n.append("K");
+        }
+        if(c=='A' || c=='E') {
+            if (board.getPiece(fromX, fromY).getType() == PieceTypes.PAWN) n.append('a' + fromX);
+            n.append('x');
+        }
+        if(c=='R') n.append("0-0");
+        n.append('a'+toX);
+        n.append(toY);
         ArrayList<InterfaceChange> list = board.makeMove(fromX, fromY, toX, toY, currentPlayer, c, type);
         if (currentPlayer == ChessColors.WHITE) {
             currentPlayer = ChessColors.BLACK;
             if (board.checkingBlack != null) {
                 if (board.isCheckmate(ChessColors.BLACK)) {
                     currentGameStatus = GameStatus.BLACKMATE;
+                    n.append('#');
                     System.out.println("Mate");
                     return new ArrayList<>(
                             Collections.singleton(new InterfaceChange(-1, -1, null, null)));
@@ -52,7 +70,6 @@ public class HotSeatGame extends Game {
                 currentGameStatus = GameStatus.BLACKCHECK;
                 return list;
             }
-            currentGameStatus = GameStatus.NORMAL;
         } else {
             currentPlayer = ChessColors.WHITE;
             if (board.checkingWhite != null) {
@@ -65,12 +82,11 @@ public class HotSeatGame extends Game {
                 currentGameStatus = GameStatus.WHITECHECK;
                 return list;
             }
-            currentGameStatus = GameStatus.NORMAL;
         }
+        currentGameStatus = GameStatus.NORMAL;
         return list;
     }
 
-    @Override
     public boolean isTaken(int X, int Y) {
         return board.getPiece(X, Y) != null;
     }

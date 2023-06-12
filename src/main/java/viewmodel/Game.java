@@ -1,5 +1,6 @@
 package viewmodel;
 
+import javafx.util.Pair;
 import model.Board;
 import model.ChessColors;
 import model.PieceTypes;
@@ -8,6 +9,8 @@ import model.Triplet;
 import java.util.ArrayList;
 
 public abstract class Game {
+    ArrayList<String> saver;
+    ArrayList<Pair<Integer, Integer>> from;
     ChessColors currentPlayer;
     Board board;
     public GameStatus currentGameStatus;

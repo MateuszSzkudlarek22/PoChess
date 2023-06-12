@@ -9,6 +9,7 @@ public class Board {
     Piece[][] fields;
     public Piece checkingWhite;
     public Piece checkingBlack;
+    int count = 0;
 
     public Board() {
         this.fields = new Piece[8][8];
@@ -58,9 +59,15 @@ public class Board {
     }
 
     public ArrayList<InterfaceChange> makeMove(int fromX, int fromY, int toX, int toY, ChessColors color, char kind, PieceTypes type) {
+        count++;
+        fields[fromX][fromY].lastMoved = count;
+        if(fields[fromX][fromY].getType()==PieceTypes.PAWN && Math.abs(toY-fromY) == 2 &&
+                !fields[fromX][fromY].moved1) fields[fromX][fromY].moved1 = true;
+        else fields[fromX][fromY].moved1 = false;
         fields[fromX][fromY].moved = true;
         if (color == ChessColors.WHITE) checkingWhite = null;
         else checkingBlack = null;
+
         switch (kind) {
             case 'M', 'A' -> {
                 return makeNormalMove(fromX, fromY, toX, toY, color);
@@ -71,8 +78,28 @@ public class Board {
             case 'C' -> {
                 return makeCastlingMove(fromX, fromY, toX, toY, color);
             }
+            case 'T' -> {
+                return makeTMove(fromX, fromY, toX, toY, color);
+            }
         }
         return null;
+    }
+
+    private ArrayList<InterfaceChange> makeTMove(int fromX, int fromY, int toX, int toY, ChessColors color) {
+        ArrayList<InterfaceChange> list = new ArrayList<>();
+        fields[toX][toY] = fields[fromX][fromY].setCoordinates(toX, toY);
+        fields[fromX][fromX] = null;
+        list.add(new InterfaceChange(fromX, fromY, null, null));
+        if(color == ChessColors.WHITE){
+            fields[toX][toY-1] = null;
+            list.add(new InterfaceChange(toX, toY-1, null, null));
+        }
+        else{
+            fields[toX][toY+1] = null;
+            list.add(new InterfaceChange(toX, toY+1, null, null));
+        }
+        list.add(new InterfaceChange(toX, toY, PieceTypes.PAWN, color));
+        return list;
     }
 
     public ArrayList<Triplet> getPossibleMoves(int X, int Y, ChessColors color) {
