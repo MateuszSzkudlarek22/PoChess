@@ -20,7 +20,7 @@ public class Main extends Application {
     }
     @Override
     public void start(Stage stage) {
-        VBox root = new VBox(newText(), getOnePlayerButton(), getTwoPlayersButton());
+        VBox root = new VBox(newText(), /*getOnePlayerButton(),*/ getTwoPlayersButton());
         root.setSpacing(30);
         root.setAlignment(Pos.CENTER);
         Scene scene = new Scene(root, 600, 500);

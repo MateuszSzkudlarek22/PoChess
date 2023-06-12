@@ -235,9 +235,16 @@ public class CustomButton extends Button {
         saveGame.setPrefHeight(70);
         saveGame.setPrefWidth(120);
         Button endGame = new Button("End game");
+        endGame.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                stage.close();
+                gameInterface.close();
+            }
+        });
         endGame.setPrefHeight(70);
         endGame.setPrefWidth(120);
-        VBox root = new VBox(text, saveGame, endGame);
+        VBox root = new VBox(text, /*saveGame,*/ endGame);
         root.setAlignment(Pos.CENTER);
         root.setSpacing(30);
         Scene scene = new Scene(root, 250, 300);
