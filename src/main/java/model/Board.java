@@ -16,6 +16,7 @@ public class Board {
     }
 
 
+
     public void setNormalGame() {
         fields[0][0] = new Piece(ChessColors.WHITE, PieceTypes.ROOK, 0, 0, this);
         fields[1][0] = new Piece(ChessColors.WHITE, PieceTypes.KNIGHT, 1, 0, this);
@@ -71,7 +72,7 @@ public class Board {
     private ArrayList<InterfaceChange> makeTMove(int fromX, int fromY, int toX, int toY, ChessColors color) {
         ArrayList<InterfaceChange> list = new ArrayList<>();
         fields[toX][toY] = fields[fromX][fromY].setCoordinates(toX, toY);
-        fields[fromX][fromX] = null;
+        fields[fromX][fromY] = null;
         list.add(new InterfaceChange(fromX, fromY, null, null));
         if(color == ChessColors.WHITE){
             fields[toX][toY-1] = null;

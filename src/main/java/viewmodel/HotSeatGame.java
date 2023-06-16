@@ -51,6 +51,7 @@ public class HotSeatGame extends Game {
             if (board.checkingWhite != null) {
                 if (board.isCheckmate(ChessColors.WHITE)) {
                     currentGameStatus = GameStatus.WHITEMATE;
+                    currentGameStatus = GameStatus.BLACKMATE;
                     return new ArrayList<>(
                             Collections.singleton(new InterfaceChange(-1, -1, null, null)));
                 }

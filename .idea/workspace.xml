@@ -7,9 +7,9 @@
     <list default="true" id="7c7c73c1-0ffe-4d0b-9e56-1efc98aac9ea" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Piece.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/CustomButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/CustomButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/viewmodel/HotSeatGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/viewmodel/HotSeatGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/hello-view.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
