@@ -39,12 +39,9 @@ public class Piece {
     }
 
     public ArrayList<Triplet> getPossibleMoves(ChessColors color) {
-        System.out.println("Piece");
-        System.out.println(color + " " + this.color);
         if (color != this.color) return null;
         switch (type) {
             case PAWN -> {
-                System.out.println(X + " " + Y);
                 return getPossibleMovesPawn();
             }
             case ROOK -> {
@@ -384,7 +381,6 @@ public class Piece {
     }
 
     private ArrayList<Triplet> getPossibleMovesPawn() {
-        System.out.println("Pawn");
         ArrayList<Triplet> list = new ArrayList<>();
         if (this.color == ChessColors.WHITE) {
             if (X - 1 >= 0 && board.fields[X - 1][Y] != null &&
@@ -425,7 +421,6 @@ public class Piece {
                 list.add(new Triplet('E', X + 1, Y + 1));
             }
         } else {
-            System.out.println("Black");
 
             if (X - 1 >= 0 && board.fields[X - 1][Y] != null &&
                     board.fields[X - 1][Y].getType() == PieceTypes.PAWN && board.fields[X - 1][Y].moved &&

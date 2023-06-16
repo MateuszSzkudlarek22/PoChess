@@ -15,23 +15,6 @@ public class Board {
         this.fields = new Piece[8][8];
     }
 
-    public void print() {
-        for (int j = 7; j >= 0; j--) {
-            for (int i = 0; i < 8; i++) {
-                if (fields[i][j] != null) {
-                    switch (fields[i][j].getType()) {
-                        case PAWN -> System.out.print("P ");
-                        case ROOK -> System.out.print("R ");
-                        case BISHOP -> System.out.print("B ");
-                        case KNIGHT -> System.out.print("K ");
-                        case QUEEN -> System.out.print("Q ");
-                        case KING -> System.out.print("Ki ");
-                    }
-                } else System.out.print("0 ");
-            }
-            System.out.println("");
-        }
-    }
 
     public void setNormalGame() {
         fields[0][0] = new Piece(ChessColors.WHITE, PieceTypes.ROOK, 0, 0, this);
@@ -103,12 +86,10 @@ public class Board {
     }
 
     public ArrayList<Triplet> getPossibleMoves(int X, int Y, ChessColors color) {
-        System.out.println(X + " " + Y);
         return fields[X][Y].getPossibleMoves(color);
     }
 
     public ArrayList<Triplet> getPossibleCheckedMoves(int X, int Y, ChessColors color) {
-        System.out.println("checked");
         return fields[X][Y].getPossibleCheckedMoves(color);
     }
 

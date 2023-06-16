@@ -81,11 +81,9 @@ public class CustomButton extends Button {
                     }
                     gameInterface.current = null;
                     gameInterface.list = null;
-                    gameInterface.game.print();
                     return;
                 }
                 if (gameInterface.game.isTaken(X, Y)) {
-                    System.out.println(X + " " + Y);
                     if (gameInterface.current == null) {
                         ArrayList<Triplet> list = gameInterface.game.getPossibleMoves(X, Y);
                         if (list != null && !list.isEmpty()) {
@@ -276,7 +274,6 @@ class PieceSet {
 
     ImageView getImageView(ChessColors color, PieceTypes piece) {
         String string = color == ChessColors.BLACK ? blackMap.get(piece) : whiteMap.get(piece);
-        System.out.println(string);
         ImageView img = new ImageView(new Image(string));
         img.setFitWidth(35);
         img.setFitHeight(35);

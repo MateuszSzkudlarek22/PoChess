@@ -22,48 +22,24 @@ public class HotSeatGame extends Game {
 
 
     public ArrayList<Triplet> getPossibleMoves(int X, int Y) {
-        System.out.println(X + " " + Y);
         switch (currentGameStatus) {
             case NORMAL -> {
                 return this.board.getPossibleMoves(X, Y, currentPlayer);
             }
             case BLACKCHECK, WHITECHECK -> {
-                System.out.println("Here");
                 return this.board.getPossibleCheckedMoves(X, Y, currentPlayer);
             }
         }
         return null;
     }
 
-    public void print() {
-        board.print();
-    }
-
     public ArrayList<InterfaceChange> makeMove(int fromX, int fromY, int toX, int toY, char c, PieceTypes type) {
-        /*StringBuilder n = new StringBuilder();
-        from.add(new Pair<>(fromX, fromY));
-        switch(board.getPiece(fromX, fromY).getType()){
-            case ROOK -> n.append("W");
-            case BISHOP -> n.append("G");
-            case KNIGHT -> n.append("S");
-            case QUEEN -> n.append("H");
-            case KING -> n.append("K");
-        }
-        if(c=='A' || c=='E') {
-            if (board.getPiece(fromX, fromY).getType() == PieceTypes.PAWN) n.append('a' + fromX);
-            n.append('x');
-        }
-        if(c=='R') n.append("0-0");
-        n.append('a'+toX);
-        n.append(toY);*/
         ArrayList<InterfaceChange> list = board.makeMove(fromX, fromY, toX, toY, currentPlayer, c, type);
         if (currentPlayer == ChessColors.WHITE) {
             currentPlayer = ChessColors.BLACK;
             if (board.checkingBlack != null) {
                 if (board.isCheckmate(ChessColors.BLACK)) {
                     currentGameStatus = GameStatus.BLACKMATE;
-                    //n.append('#');
-                    System.out.println("Mate");
                     return new ArrayList<>(
                             Collections.singleton(new InterfaceChange(-1, -1, null, null)));
                 }
@@ -75,7 +51,6 @@ public class HotSeatGame extends Game {
             if (board.checkingWhite != null) {
                 if (board.isCheckmate(ChessColors.WHITE)) {
                     currentGameStatus = GameStatus.WHITEMATE;
-                    currentGameStatus = GameStatus.BLACKMATE;
                     return new ArrayList<>(
                             Collections.singleton(new InterfaceChange(-1, -1, null, null)));
                 }
